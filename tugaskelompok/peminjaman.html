@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peminjaman -- PINJAM.IN</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <img src="assets/d50a5fbb0302caf4c2e7ba1ae3d7b993.jpg" alt="Logo UT" class="logo">
+                <h1>PINJAM.IN</h1>
+            </div>
+            <div class="header-right">
+                <span id="greeting" class="greeting"></span>
+                <button id="logoutBtn" class="btn-secondary">Keluar</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="stok.html" class="nav-link">Data Buku</a></li>
+                <li><a href="peminjaman.html" class="nav-link">Peminjaman Buku</a></li>
+                <li><a href="pengembalian.html" class="nav-link">Pengembalian Buku</a></li>
+                <li><a href="tracking.html" class="nav-link">Pembelian Buku</a></li>
+                <li class="dropdown">
+                    <a href="history.html" class="nav-link">Laporan</a>
+                    <div class="dropdown-content">
+                        <a href="lap_peminjaman.html">Lap.Peminjaman</a>
+                        <a href="lap_pembelian.html">Lap.Pembelian</a>
+                    </div>
+                </li>
+                <li><a href="history.html" class="nav-link">Histori Transaksi Pembelian Buku</a></li>
+            </ul>
+        </nav>
+
+ <div class="container">
+    <h2>Form Peminjaman Buku</h2>
+
+    <form id="formPeminjaman">
+
+      <!-- ====================== KODE PINJAM OTOMATIS ======================== -->
+      <div>
+        <label>Kode Pinjam:</label>
+        <input type="text" id="kodePinjam" readonly style="background:#eee;">
+      </div>
+      <!-- ==================================================================== -->
+
+      <div>
+        <label>Nama Peminjam:</label>
+        <input type="text" id="nama" placeholder="Masukkan nama peminjam" required>
+      </div>
+
+      <div>
+        <label>Judul Buku:</label>
+        <input type="text" id="judul" placeholder="Masukkan judul buku" required>
+      </div>
+
+      <div>
+        <label>Tanggal Peminjaman:</label>
+        <input type="date" id="tglPinjam" required>
+      </div>
+
+      <div>
+        <label>Tanggal Pengembalian:</label>
+        <input type="date" id="tglKembali" required>
+      </div>
+
+      <button type="submit" class="btn">Simpan Data</button>
+    </form>
+
+    <h2>Daftar Peminjaman Aktif</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kode Pinjam</th>
+          <th>Nama Peminjam</th>
+          <th>Judul Buku</th>
+          <th>Tgl Peminjaman</th>
+          <th>Tgl Pengembalian</th>
+        </tr>
+      </thead>
+      <tbody id="dataPeminjaman">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    /* ================= GENERATE KODE PINJAM ===================== */
+    function generateKodePinjam() {
+        let last = localStorage.getItem("lastKodePinjam");
+
+        if (!last) {
+            last = 1;
+        } else {
+            last = parseInt(last) + 1;
+        }
+
+        const kode = "PMJ-" + String(last).padStart(3, "0");
+        localStorage.setItem("lastKodePinjam", last);
+
+        document.getElementById("kodePinjam").value = kode;
+    }
+
+    window.onload = generateKodePinjam;
+    /* ============================================================ */
+
+
+    /* ================= TAMBAH DATA KE TABEL ===================== */
+    const form = document.getElementById("formPeminjaman");
+    const tbody = document.getElementById("dataPeminjaman");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const kode = document.getElementById("kodePinjam").value;
+      const nama = document.getElementById("nama").value;
+      const judul = document.getElementById("judul").value;
+      const tglPinjam = document.getElementById("tglPinjam").value;
+      const tglKembali = document.getElementById("tglKembali").value;
+
+      const rowCount = tbody.rows.length + 1;
+
+      const row = `
+        <tr>
+          <td>${rowCount}</td>
+          <td>${kode}</td>
+          <td>${nama}</td>
+          <td>${judul}</td>
+          <td>${tglPinjam}</td>
+          <td>${tglKembali}</td>
+        </tr>`;
+
+      tbody.insertAdjacentHTML("beforeend", row);
+
+      alert("Data peminjaman berhasil ditambahkan!");
+
+      form.reset();
+      generateKodePinjam();
+    });
+    /* ============================================================ */
+  </script>
+
+  <script src="js/data.js"></script>
+  <script src="js/script.js"></script>
+
+</body>
+</html>

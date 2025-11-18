@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lap.Pembelian - PINJAM.IN</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <img src="assets/d50a5fbb0302caf4c2e7ba1ae3d7b993.jpg" alt="Logo UT" class="logo">
+                <h1>PINJAM.IN</h1>
+            </div>
+            <div class="header-right">
+                <span id="greeting" class="greeting"></span>
+                <button id="logoutBtn" class="btn-secondary">Keluar</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="stok.html" class="nav-link">Data Buku</a></li>
+                <li><a href="peminjaman.html" class="nav-link">Peminjaman Buku</a></li>
+                <li><a href="pengembalian.html" class="nav-link">Pengembalian Buku</a></li>
+                <li><a href="tracking.html" class="nav-link">Pembelian Buku</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Laporan</a>
+                    <div class="dropdown-content">
+                        <a href="lap_peminjaman.html">Lap.Peminjaman</a>
+                        <a href="lap_pembelian.html">Lap.Pembelian</a>
+                    </div>
+                </li>
+                <li><a href="history.html" class="nav-link">Histori Transaksi Pembelian Buku</a></li>
+            </ul>
+        </nav>
+
+  <div class="container">
+    <h2>Laporan Pembelian Buku</h2>
+
+    <div class="filter">
+      <label>Pilih Periode:</label>
+      <input type="month" id="periode">
+      <button class="btn" onclick="generateReport()">Tampilkan</button>
+    </div>
+
+    <table id="laporanPembelian">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Pembeli</th>
+          <th>Judul Buku</th>
+          <th>Jumlah</th>
+          <th>Tanggal Pembelian</th>
+          <th>Total Harga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Salsa</td>
+          <td>Dasar Desain Grafis</td>
+          <td>1</td>
+          <td>2025-11-02</td>
+          <td>Rp75.000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Rafi</td>
+          <td>Belajar Machine Learning</td>
+          <td>2</td>
+          <td>2025-11-06</td>
+          <td>Rp200.000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="rekap">
+      <h3>Rekap Bulanan</h3>
+      <p>Total Pembelian Buku: <strong>3 Buku</strong></p>
+      <p>Total Transaksi: <strong>Rp275.000</strong></p>
+    </div>
+  </div>
+
+  <script>
+    function generateReport() {
+      const periode = document.getElementById("periode").value;
+      if (periode === "") {
+        alert("Silakan pilih periode terlebih dahulu!");
+      } else {
+        alert("Menampilkan laporan pembelian untuk periode: " + periode);
+      }
+    }
+  </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

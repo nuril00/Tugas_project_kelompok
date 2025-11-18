@@ -1,0 +1,115 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histori -- PINJAM.IN</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <img src="assets/d50a5fbb0302caf4c2e7ba1ae3d7b993.jpg" alt="Logo UT" class="logo">
+                <h1>PINJAM.IN</h1>
+            </div>
+            <div class="header-right">
+                <span id="greeting" class="greeting"></span>
+                <button id="logoutBtn" class="btn-secondary">Keluar</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="stok.html" class="nav-link">Data Buku</a></li>
+                <li><a href="peminjaman.html" class="nav-link">Peminjaman Buku</a></li>
+                <li><a href="pengembalian.html" class="nav-link">Pengembalian Buku</a></li>
+                <li><a href="tracking.html" class="nav-link">Pembelian Buku</a></li>
+                <li class="dropdown">
+                    <a href="#" class="nav-link">Laporan</a>
+                    <div class="dropdown-content">
+                        <a href="lap_peminjaman.html">Lap.Peminjama</a>
+                        <a href="lap_pembelian.html">Lap.Pembelian</a>
+                    </div>
+                </li>
+                <li><a href="history.html" class="nav-link">Histori Transaksi Pembelian Buku</a></li>
+            </ul>
+        </nav>
+
+ <div class="container">
+
+  <h2>Histori Transaksi Pembelian Buku</h2>
+
+  <!-- FILTER -->
+  <div class="card">
+    <h3>Filter Riwayat Pembelian</h3>
+
+    <label>Dari Tanggal:</label>
+    <input type="date" id="startDate">
+
+    <label>Sampai Tanggal:</label>
+    <input type="date" id="endDate">
+
+    <button class="btn">Terapkan</button>
+  </div>
+
+  <!-- TABEL PEMBELIAN -->
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Kode Pembelian</th>
+        <th>Nama Pembeli</th>
+        <th>Judul Buku</th>
+        <th>Jumlah</th>
+        <th>Total Harga</th>
+        <th>Tanggal Pembelian</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>PBL-001</td>
+        <td>Rina Aprilia</td>
+        <td>Pemrograman Web Dasar</td>
+        <td>1</td>
+        <td>Rp 50.000</td>
+        <td>2025-11-05</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>PBL-002</td>
+        <td>Bagas Mahendra</td>
+        <td>Algoritma Lanjut</td>
+        <td>2</td>
+        <td>Rp 100.000</td>
+        <td>2025-11-07</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>PBL-003</td>
+        <td>Nadya Putri</td>
+        <td>Desain UI/UX</td>
+        <td>1</td>
+        <td>Rp 55.000</td>
+        <td>2025-11-09</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- REKAP PEMBELIAN -->
+  <div class="rekap">
+    <h3>Rekap Pembelian</h3>
+    <p>Total Transaksi Pembelian: <strong>3</strong></p>
+    <p>Total Buku Terjual: <strong>4 Buku</strong></p>
+    <p>Total Pendapatan: <strong>Rp 205.000</strong></p>
+  </div>
+
+</div>
+
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

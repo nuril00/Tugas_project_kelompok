@@ -1,0 +1,144 @@
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembalian -- PINJAM.IN</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-left">
+                <img src="assets/d50a5fbb0302caf4c2e7ba1ae3d7b993.jpg" alt="Logo UT" class="logo">
+                <h1>PINJAM.IN</h1>
+            </div>
+            <div class="header-right">
+                <span id="greeting" class="greeting"></span>
+                <button id="logoutBtn" class="btn-secondary">Keluar</button>
+            </div>
+        </header>
+
+        <nav class="dashboard-nav">
+            <ul>
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="stok.html" class="nav-link">Data Buku</a></li>
+                <li><a href="peminjaman.html" class="nav-link">Peminjaman Buku</a></li>
+                <li><a href="pengembalian.html" class="nav-link">Pengembalian Buku</a></li>
+                <li><a href="tracking.html" class="nav-link">Pembelian Buku</a></li>
+                <li class="dropdown">
+                    <a href="history.html" class="nav-link">Laporan</a>
+                    <div class="dropdown-content">
+                        <a href="lap_peminjaman.html">Lap.Peminjaman </a>
+                        <a href="lap_pembelian.html">Lap.Pembelian</a>
+                    </div>
+                </li>
+                <li><a href="history.html" class="nav-link">Histori Transaksi Pembelian Buku</a></li>
+            </ul>
+        </nav>
+<div class="container">
+  <h2>Form Pengembalian Buku</h2>
+
+  <!-- Form Cari -->
+  <div class="card">
+    <h3>Cari Data Peminjaman</h3>
+    <label for="kodePinjam">Kode Peminjaman:</label>
+    <input type="text" id="kodePinjam" placeholder="Masukkan kode peminjaman (contoh: PMJ-001)">
+    <button class="btn" onclick="cariData()">Cari</button>
+  </div>
+
+  <!-- Form Hasil (contoh muncul setelah pencarian) -->
+  <div class="card" id="hasilPeminjaman" style="display:none;">
+    <h3>Data Peminjaman Ditemukan</h3>
+
+    <p><strong>Nama Peminjam:</strong> <span id="namaPeminjam">-</span></p>
+    <p><strong>Judul Buku:</strong> <span id="judulBuku">-</span></p>
+    <p><strong>Tanggal Pinjam:</strong> <span id="tglPinjam">-</span></p>
+    <p><strong>Batas Pengembalian:</strong> <span id="tglBatas">-</span></p>
+
+    <label>Status Pengembalian:</label>
+    <select id="statusKembali">
+      <option value="Tepat Waktu">Tepat Waktu</option>
+      <option value="Terlambat">Terlambat</option>
+      <option value="Rusak">Rusak</option>
+      <option value="Hilang">Hilang</option>
+    </select>
+
+    <button class="btn" onclick="prosesKembali()">Proses Pengembalian</button>
+  </div>
+
+  <!-- Tabel Riwayat Pengembalian -->
+  <h2>Daftar Pengembalian Buku</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Kode Pinjam</th>
+        <th>Nama Peminjam</th>
+        <th>Judul Buku</th>
+        <th>Tgl Pinjam</th>
+        <th>Tgl Kembali</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="tabelPengembalian">
+      <tr>
+        <td>1</td>
+        <td>PMJ-001</td>
+        <td>Rina</td>
+        <td>Pemrograman Web</td>
+        <td>2025-10-30</td>
+        <td>2025-11-02</td>
+        <td>Tepat Waktu</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>PMJ-002</td>
+        <td>Dino</td>
+        <td>Algoritma Dasar</td>
+        <td>2025-11-01</td>
+        <td>2025-11-08</td>
+        <td>Terlambat</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="rekap">
+    <h3>Rekap Pengembalian</h3>
+    <p>Total Pengembalian Hari Ini: <strong>2 Buku</strong></p>
+    <p>Tepat Waktu: <strong>1</strong></p>
+    <p>Terlambat: <strong>1</strong></p>
+  </div>
+
+</div>
+
+<script>
+function cariData() {
+  let kode = document.getElementById("kodePinjam").value;
+
+  if (kode === "") {
+    alert("Masukkan kode peminjaman terlebih dahulu!");
+    return;
+  }
+
+  // Contoh data dummy
+  document.getElementById("namaPeminjam").innerText = "Contoh Nama";
+  document.getElementById("judulBuku").innerText = "Judul Buku Contoh";
+  document.getElementById("tglPinjam").innerText = "2025-11-01";
+  document.getElementById("tglBatas").innerText = "2025-11-08";
+
+  document.getElementById("hasilPeminjaman").style.display = "block";
+}
+
+function prosesKembali() {
+  alert("Pengembalian berhasil diproses!");
+}
+</script>
+
+
+
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
